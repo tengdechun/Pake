@@ -12,5 +12,28 @@
   },
   "build": {
     "frontendDist": "../dist"
+  },
+  // ========== 新增的链接拦截配置 ==========
+  "tauri": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "WeRead",
+        "width": 1200,
+        "height": 800,
+        "fullscreen": false,
+        // 阻止新窗口弹出（强制在应用内打开链接）
+        "newWindow": false
+      }
+    ],
+    "webview": {
+      // 伪装成 Chrome 浏览器，避免网页检测到 Tauri 环境
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    },
+    "security": {
+      // 允许拦截自定义协议和链接
+      "dangerousDisableAssetCspModification": true
+    }
   }
+  // ========== 新增配置结束 ==========
 }
